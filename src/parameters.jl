@@ -1150,7 +1150,7 @@ Update all parameters in `pvec` that are not fixed with
 `values`. Length of `values` does not need equal length of `pvec` (as in the case of regime-switching parameters).
 Function optimized for speed.
 """
-function update!(pvec::ParameterVector, values::AbstractVector{T};
+function update!(pvec::Vector{Union{AbstractParameter{T}, AbstractVectorParameter{Vector,T}}}, values::AbstractVector{Union{Vector{T},T}};
                  change_value_type::Bool = false) where T
     # TODO: move the ParameterAD part of this function to its own update!
     #       e.g. `update!(pvec::AbstractVector{AbstractParameterAD}, values::AbstractVector{T};
